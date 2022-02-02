@@ -33,3 +33,11 @@ INNER JOIN recipe_texts
 ON recipes.id = recipe_texts.recipe
 WHERE recipes.id = 2;
 
+
+DELETE FROM
+recipe_texts
+WHERE recipe = 2;
+
+DELETE FROM
+recipes
+WHERE id = 2;
