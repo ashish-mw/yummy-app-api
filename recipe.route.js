@@ -2,11 +2,17 @@ const { Router } = require("express");
 
 const router = Router();
 
-const { recipes } = require("./db");
+const {
+  recipes,
+  writeRecipesToFile,
+  getAllRecipes,
+  insertRecipe,
+} = require("./db");
 
 // returns all recipes
 router.get("/", (req, res) => {
-  res.send(recipes);
+  const data = getAllRecipes();
+  res.send(data);
 });
 
 // returns just 1 recipe
@@ -26,9 +32,9 @@ router.post("/", (req, res) => {
   if (!payload.name) {
     return res.status(400).send({ message: "Recipe should have a name" });
   }
-  payload.id = new Date().getTime();
-  recipes.push(payload);
-  return res.status(201).send(payload);
+  const newRecipe = insertRecipe(payload.name);
+  writeRecipesToFile();
+  return res.status(201).send(newRecipe);
 });
 
 // delete a recipe
