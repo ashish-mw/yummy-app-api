@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ashish-mw/yummy-app-api#readme",
   "dependencies": {
+    "better-sqlite3": "^7.5.0",
     "express": "^4.17.2"
   },
   "devDependencies": {

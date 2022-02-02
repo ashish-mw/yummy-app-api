@@ -2,10 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 8080;
 
-const { loadRecipesFromFile, writeRecipesToFile } = require("./db");
 const recipeRoutes = require("./recipe.route");
-
-loadRecipesFromFile();
 
 app.use(express.json());
 
